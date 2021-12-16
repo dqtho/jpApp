@@ -1,0 +1,5 @@
+database: user, product, chat, comment, image
+-user: id, username, email, password, avata, point, credit, socketId
+-product: id, userId, name, mota, gia, khuVuc, danhMuc, credit, 
+-chat:id, targetId, content, time
+-image: id, productId
