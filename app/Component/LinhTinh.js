@@ -1,9 +1,14 @@
-import { Dimensions } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage/src/AsyncStorage.js';
+import { Dimensions, AsyncStorage } from 'react-native';
+// import AsyncStorage from '@react-native-async-storage/async-storage/src/AsyncStorage.js';
 
 export default class LinhTinh {
     static deviceWidth = Dimensions.get('window').width;
     static deviceHeight = Dimensions.get('window').height;
+
+    static email = this.getData("email")
+    static password = this.getData("password")
+    static id = this.getData("id")
+    static avata = this.getData("avata")
 
     static async storeData(key, data) {
         try {
@@ -16,12 +21,12 @@ export default class LinhTinh {
     static async getData(key) {
         try {
             let value = await AsyncStorage.getItem(key);
-            if (value !== null) {
-                // console.log( "getData "+value)
+            if (value != null) {
+                console.log( "getData "+value)
                 return value
             }
         } catch (error) {
-            // console.log("get data " + error)
+            console.log("get data " + error)
             return null
         }
     }

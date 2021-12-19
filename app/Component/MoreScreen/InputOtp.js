@@ -1,5 +1,5 @@
 import React from "react"
-import { Text, StyleSheet, Image, TextInput, ScrollView, View, TouchableOpacity } from "react-native"
+import { Text, StyleSheet, Image, TextInput, ScrollView, View, TouchableOpacity, Alert } from "react-native"
 import Socketio from "../Socketio"
 
 import NavigationBar from "../NavigationBar"
@@ -30,8 +30,7 @@ export default class InputOtp extends React.Component {
 
     }
     alert(msg) {
-        this.setState({ alert: msg })
-        setTimeout(() => { this.setState({ alert: null }) }, 3000)
+        Alert.alert(msg)
 
 
     }
@@ -43,10 +42,7 @@ export default class InputOtp extends React.Component {
                     this.setState({ password: val.password, email: val.email, serverOtp: val.otp })
                 }else{
                     this.alert("email da duoc dang ky")
-                    setTimeout(()=>{
-                        this.props.navigation.navigate("Login")
-                    }, 3000)
-                    
+                    this.props.navigation.navigate("Login")
                 }
                 
             }else if(val.type== "final"){

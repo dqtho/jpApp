@@ -6,6 +6,7 @@ let port = process.env.port || 3000
 let LinhTinh = require("./LinhTinh")
 let signUp = require("./signUp")
 let signIn = require("./signIn")
+let postProduct = require("./postProduct")
 
 io.on("connection", socket => {
     console.log(socket.id)
@@ -21,6 +22,13 @@ io.on("connection", socket => {
         let a = await signIn(req)
         socket.emit("signInResponse", a)
     })
+
+    socket.on("postProduct", async req=>{
+        let a = await postProduct(req)
+        console.log(req)
+        socket.emit("postProductResponse", a)
+    })
+
 })
 
 http.listen(port, () => {

@@ -1,6 +1,6 @@
 import { VISITOR_KEYS } from "@babel/types"
 import React from "react"
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Keyboard } from "react-native"
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Keyboard, Alert } from "react-native"
 import md5 from "md5"
 import LinhTinh from "../LinhTinh"
 import Socketio from "../Socketio"
@@ -21,22 +21,31 @@ export default class Login extends React.Component {
     }
 
     alert(msg) {
-        this.setState({ alert: msg })
-        setTimeout(() => { this.setState({ alert: null }) }, 3000)
+        Alert.alert(msg)
+        // this.setState({ alert: msg })
+        // setTimeout(() => { this.setState({ alert: null }) }, 3000)
 
 
     }
 
     signInhandle() {
+        console.log(md5(this.state.email + this.state.password))
         let signIn = () => {
-            Socketio.emit("signIn", { password: md5(this.state.email + this.state.password) })
+            Socketio.emit("signIn", { password: md5(this.state.email.toLowerCase() + this.state.password) })
         }
         Keyboard.dismiss()
-        Socketio.on("signInResponse", val=>{
+        Socketio.on("signInResponse", async val=>{
             if(val.isSuccess){
-                console.log("sign in success")
+                console.log(val.password)
+                // await LinhTinh.removeData("email")
+                // await LinhTinh.removeData("password", val.password)
+                // await LinhTinh.removeData("id", val.id)
+                // await LinhTinh.removeData("avata", val.avata)
+                await LinhTinh.storeData("email", this.state.email)
+                await LinhTinh.storeData("password", val.password)
+                // await LinhTinh.storeData("id", val.id)
+                // await LinhTinh.storeData("avata", val.avata)
                 this.props.navigation.navigate("About")
-                LinhTinh.storeData("email", this.state.email)
             }else{
                 console.log("sign in false")
                 this.alert("dang nhap khong thanh cong")
@@ -54,7 +63,7 @@ export default class Login extends React.Component {
             Socketio.emit("signUp", {
                 type: "getOTP",
                 email: this.state.email,
-                password: md5(this.state.email + this.state.password)
+                password: md5(this.state.email.toLowerCase() + this.state.password)
             })
             this.props.navigation.navigate("InputOtp")
             // Socketio.on("signUpResponse", val =>{

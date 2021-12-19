@@ -15,7 +15,8 @@ async function signUp(req) {
             }
 
         case "final":
-            db("insert into user (email, password) values (?, ?);", [req.email, req.password])
+            let username = req.email.split("@")[0]
+            db("insert into user (username, email, password) values (?, ?, ? );", [username, req.email, req.password])
             return { type: "final", msg: "dang ky thanh cong" }
         default:
             break;
