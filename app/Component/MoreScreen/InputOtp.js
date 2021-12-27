@@ -1,6 +1,7 @@
 import React from "react"
 import { Text, StyleSheet, Image, TextInput, ScrollView, View, TouchableOpacity, Alert } from "react-native"
 import Socketio from "../Socketio"
+import LinhTinh from "../LinhTinh"
 
 import NavigationBar from "../NavigationBar"
 
@@ -21,8 +22,8 @@ export default class InputOtp extends React.Component {
             this.alert("vui long nhap otp")
         }
         else if (this.state.userOtp == this.state.serverOtp) {
-            Socketio.emit("signUp", { type: "final", email:this.state.email, password:this.state.password})
-        }else{
+            Socketio.emit("signUp", { email: this.state.email, password: this.state.password })
+        } else {
             this.alert("otp khong dung")
         }
     }
@@ -35,21 +36,20 @@ export default class InputOtp extends React.Component {
 
     }
     render() {
-        Socketio.on("signUpResponse", val => {
-            console.log( val )
-            if(val.type=="getOtp"){
-                if(val.isSuccess){
-                    this.setState({ password: val.password, email: val.email, serverOtp: val.otp })
-                }else{
-                    this.alert("email da duoc dang ky")
-                    this.props.navigation.navigate("Login")
-                }
-                
-            }else if(val.type== "final"){
-                console.log(val.msg)
-                this.props.navigation.navigate("About")
+        Socketio.on("signUpGetOtpResponse", val => {
+            console.log(val.otp)
+            if (val.isSuccess) {
+                this.setState({ password: val.password, email: val.email, serverOtp: val.otp })
+            } else {
+                this.alert("email da duoc dang ky")
+                this.props.navigation.navigate("Login")
             }
-            
+
+        })
+        Socketio.on("signUpResponse", async val => {
+            await LinhTinh.storeData("email", this.state.email)
+            await LinhTinh.storeData("password", val.password)
+            this.props.navigation.navigate("About")
         })
         return (
             <View style={{ width: "100%", height: "100%" }}>
@@ -67,6 +67,7 @@ export default class InputOtp extends React.Component {
                         value={this.state.userOtp}
                         placeholder="Nhập mã OTP"
                         placeholderTextColor="#999999"
+                        keyboardType="number-pad"
                     />
                     <TouchableOpacity onPress={() => { this.sentButton() }} style={{ width: 150, heigh: 40, borderWidth: 0.5, alignItems: "center", padding: 5, opacity: 0.7, borderRadius: 10, }}>
                         <Text style={{ color: "black", fontSize: 20 }}>gửi</Text>

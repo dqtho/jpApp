@@ -25,6 +25,7 @@ export default class NavigationBar extends React.Component {
 
             hideNavigationBar: false
         }
+        this.child = React.createRef();
     }
 
     homeButtonPress() {
@@ -32,7 +33,7 @@ export default class NavigationBar extends React.Component {
     }
     sellButtonPress() {
         this.setState({ homeTabZIndex: 0, sellTabZIndex: 1, messageTabZIndex: 0, notificationTabZIndex: 0, moreTabZIndex: 0, homeButtonOpacity: 0.5, sellButtonOpacity: 1, messageButtonOpacity: 0.5, notificationButtonOpacity: 0.5, moreButtonOpacity: 0.5 })
-
+        // this.child.postProductHandle();
     }
     messageButtonPress() {
         this.setState({ homeTabZIndex: 0, sellTabZIndex: 0, messageTabZIndex: 1, notificationTabZIndex: 0, moreTabZIndex: 0, homeButtonOpacity: 0.5, sellButtonOpacity: 0.5, messageButtonOpacity: 1, notificationButtonOpacity: 0.5, moreButtonOpacity: 0.5 })

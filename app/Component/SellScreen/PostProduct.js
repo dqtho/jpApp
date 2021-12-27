@@ -37,26 +37,32 @@ export default class PostProduct extends React.Component {
     }
 
     async postHandle() {
-        if (this.state.tieuDe == null || this.state.moTa == null || this.state.gia == null || this.state.phiShip == null || this.state.khuVuc == null || this.state.danhMuc == null || this.state.image == []) {
-            Alert.alert("Vui lòng nhập đầy đủ thông tin")
+        let password = await LinhTinh.getData("password")
+        if (password == undefined) {
+            Alert.alert("vui long dang nhap")
         } else {
-            Socketio.emit("postProduct", {
-                password: await LinhTinh.getData("password"),
+            if (this.state.tieuDe == null || this.state.moTa == null || this.state.gia == null || this.state.phiShip == null || this.state.khuVuc == null || this.state.danhMuc == null || this.state.image == []) {
+                Alert.alert("Vui lòng nhập đầy đủ thông tin")
+            } else {
+                Socketio.emit("postProduct", {
+                    password,
 
-                tieuDe: this.state.tieuDe,
-                moTa: this.state.moTa,
-                gia: this.state.gia,
-                phiShip: this.state.phiShip,
-                khuVuc: this.state.khuVuc,
-                danhMuc: this.state.danhMuc,
-                image: this.state.image,
-            })
-            Socketio.on("postProductResponse", val=>{
-                if(val.isSuccess){
-                    Alert.alert("Sản phẩm đã được đăng thành công")
-                }
-            })
+                    tieuDe: this.state.tieuDe,
+                    moTa: this.state.moTa,
+                    gia: this.state.gia,
+                    phiShip: this.state.phiShip,
+                    khuVuc: this.state.khuVuc,
+                    danhMuc: this.state.danhMuc,
+                    image: this.state.image,
+                })
+                Socketio.on("postProductResponse", val => {
+                    if (val.isSuccess) {
+                        Alert.alert("Sản phẩm đã được đăng thành công")
+                    }
+                })
+            }
         }
+
 
     }
 

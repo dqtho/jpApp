@@ -5,6 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from "./MoreScreen/Login"
 import InputOtp from "./MoreScreen/InputOtp";
 import About from "./MoreScreen/About";
+import Account from "./MoreScreen/Account";
+import ChangeEmail from "./MoreScreen/ChangeEmail";
+import ChangePassword from "./MoreScreen/ChangePassword";
 
 export default class MoreScreen extends React.Component {
 
@@ -30,6 +33,21 @@ export default class MoreScreen extends React.Component {
                         }}/>
                         <Stack.Screen name="About" component={About} options={{
                             title: 'thong tin tai khoan',
+                            headerStyle: { backgroundColor: 'red' },
+                            headerTitleStyle: { fontWeight: 'bold', } 
+                        }}/>
+                        <Stack.Screen name="Account" component={Account} options={{
+                            title: 'chinh sua thong tin tai khoan',
+                            headerStyle: { backgroundColor: 'red' },
+                            headerTitleStyle: { fontWeight: 'bold', } 
+                        }}/>
+                        <Stack.Screen name="ChangeEmail" component={ChangeEmail} options={{
+                            title: 'thay đổi địa chỉ email',
+                            headerStyle: { backgroundColor: 'red' },
+                            headerTitleStyle: { fontWeight: 'bold', } 
+                        }}/>
+                        <Stack.Screen name="ChangePassword" component={ChangePassword} options={{
+                            title: 'thay đổi mat khau',
                             headerStyle: { backgroundColor: 'red' },
                             headerTitleStyle: { fontWeight: 'bold', } 
                         }}/>

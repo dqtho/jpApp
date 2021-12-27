@@ -13,7 +13,7 @@ export default class LinhTinh {
     static async storeData(key, data) {
         try {
             await AsyncStorage.setItem(key, data);
-            console.log("store data success")
+            console.log("store data success  " + key)
         } catch (error) {
             // Error saving data
         }
