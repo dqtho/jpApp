@@ -1,7 +1,10 @@
-let app = require("express")
+let express = require("express")
+let app = express()
 let http = require("http").Server(app)
 let io = require("socket.io")(http)
 let port = process.env.port || 3000
+
+app.use(express.json({ limit: '50mb' }))
 
 // let LinhTinh = require("./LinhTinh")
 let signUp = require("./moreScreen/signUp")
@@ -12,6 +15,7 @@ const getOTP = require("./moreScreen/getOTP")
 const changeEmailGetOtp = require("./moreScreen/changeEmailGetOtp")
 const changeEmail = require("./moreScreen/changeEmail")
 const changePassword = require("./moreScreen/changePassword")
+const changeAccountData = require("./moreScreen/changeAccountData")
 
 
 io.on("connection", socket => {
@@ -32,6 +36,8 @@ io.on("connection", socket => {
     socket.on("changeEmail", async req => socket.emit("changeEmailResponse", await changeEmail(req)))
 
     socket.on("changePassword", async req => socket.emit("changePasswordResponse", await changePassword(req)))
+
+    socket.on("changeAccountData", async req => socket.emit("changeAccountDataResponse", await changeAccountData(req)))
 
 })
 

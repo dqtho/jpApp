@@ -4,7 +4,7 @@ import {
     Dimensions, AsyncStorage, StyleSheet
 } from "react-native"
 // import Data from "./Data.js"
-const socket = io("http://192.168.1.4:3000")
+const socket = io("http://192.168.1.7:3000")
 export default class Socketio{
 
     static emit(name, json){

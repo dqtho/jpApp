@@ -16,12 +16,22 @@ export default class About extends React.Component {
             phoneNumber: null,
             email: null,
             point: null,
-            credit: null
+            credit: null, 
+
+            password:null
         }
     }
     async componentDidMount() {
+        this.setState({password:await LinhTinh.getData("password")})
         Socketio.emit("getUserData", { password: await LinhTinh.getData("password") })
 
+        this.focusListener = this.props.navigation.addListener('focus',async () => {
+            Socketio.emit("getUserData", { password: await LinhTinh.getData("password") })
+        });
+
+    }
+
+    componentWillUnmount(){
     }
     render() {
         Socketio.on("getUserDataResponse", val => {
@@ -40,12 +50,12 @@ export default class About extends React.Component {
             })
 
 
-            console.log(val)
         })
         return (
 
+
             <View>
-                <View style={{ flexDirection: "row", width: "100%", height: 120, backgroundColor: "white", marginTop: 20, opacity: 0.8 }}>
+                <View style={{ flexDirection: "row", width: "100%", height: 120, backgroundColor: "white", marginTop: 20, opacity: 1 }}>
                     {this.state.avata == null ? (
                         <Image
                             style={{ width: 80, height: 80, margin: 20, borderRadius: 10 }}
@@ -126,6 +136,8 @@ export default class About extends React.Component {
                         <Text style={{ color: "black", fontSize: 20, margin: 10 }}>dang xuat</Text>
                     </TouchableOpacity>
                 </View>
+
+                <Text style={{color:"black", fontSize:20}}>{this.state.password}</Text>
 
             </View>
         )

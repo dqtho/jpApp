@@ -19,7 +19,7 @@ export default class PostProduct extends React.Component {
         }
         this.tinh = ["Toàn Nhật Bản   ", "愛知県", "秋田県", "青森県", "千葉県", "愛媛県", "福井県", "福岡県", "福島県", "岐阜県", "群馬県", "広島県", "北海道", "兵庫県", "	茨城県", "石川県", "岩手県", "香川県", "鹿児島県", "神奈川県", "高知県", "熊本県", "京都府", "三重県", "宮城県", "宮崎県", "長野県", "長崎県", "奈良県", "新潟県", "大分県", "岡山県", "沖縄県", "大阪府", "佐賀県", "埼玉県", "滋賀県", "島根県", "静岡県", "栃木県", "徳島県", "東京都", "鳥取県", "富山県", "和歌山県", "山形県", "山口県", "山梨県"]
         this.tinh.map((val, i) => {
-            this.tinh[i] = { label: val, value: val, color: "black" }
+            this.tinh[i] = { label: val, value: val, color: "black", id: i }
         })
     }
 
@@ -27,6 +27,9 @@ export default class PostProduct extends React.Component {
         ImagePicker.openPicker({
             includeBase64: true,
             mediaType: "photo",
+            compressImageQuality: 0.5,
+            compressImageMaxWidth: 500,
+            compressImageMaxHeight: 500
         }).then(image => {
             let img = this.state.image
             img.push(image.data)
@@ -58,6 +61,7 @@ export default class PostProduct extends React.Component {
                 Socketio.on("postProductResponse", val => {
                     if (val.isSuccess) {
                         Alert.alert("Sản phẩm đã được đăng thành công")
+                        this.props.navigation.goBack("Sell")
                     }
                 })
             }
