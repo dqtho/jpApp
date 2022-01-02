@@ -25,10 +25,6 @@ export default class About extends React.Component {
         this.setState({password:await LinhTinh.getData("password")})
         Socketio.emit("getUserData", { password: await LinhTinh.getData("password") })
 
-        this.focusListener = this.props.navigation.addListener('focus',async () => {
-            Socketio.emit("getUserData", { password: await LinhTinh.getData("password") })
-        });
-
     }
 
     componentWillUnmount(){

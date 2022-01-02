@@ -35,7 +35,9 @@ export default class PostProduct extends React.Component {
             img.push(image.data)
             // console.log(image);
             this.setState({ image: img })
-        });
+        }).catch(db=>{
+            console.log(db)
+        })
         console.log(this.state.image.length)
     }
 
@@ -61,7 +63,7 @@ export default class PostProduct extends React.Component {
                 Socketio.on("postProductResponse", val => {
                     if (val.isSuccess) {
                         Alert.alert("Sản phẩm đã được đăng thành công")
-                        this.props.navigation.goBack("Sell")
+                        this.props.navigation.navigate("Sell")
                     }
                 })
             }
@@ -141,14 +143,14 @@ export default class PostProduct extends React.Component {
                                 onValueChange={(danhMuc) => this.setState({ danhMuc })}
                                 itemStyle={{ backgroundColor: "white" }}
                                 items={[
-                                    { label: 'Quần áo', value: 'quanAo', color: "black" },
-                                    { label: 'Điện tử', value: 'dienTu', color: "black" },
-                                    { label: 'Làm đẹp', value: 'lamDep', color: "black" },
-                                    { label: 'Thực phẩm', value: 'thucPham', color: "black" },
-                                    { label: 'Dịch vụ', value: 'dichVu', color: "black" },
-                                    { label: 'Gia dụng', value: 'giaDung', color: "black" },
-                                    { label: 'Việc làm', value: 'viecLam', color: "black" },
-                                    { label: 'Nhà ở', value: 'nhaO', color: "black" },
+                                    { label: 'Quần áo', value: 'quanAo', color: "black", id:1 },
+                                    { label: 'Điện tử', value: 'dienTu', color: "black", id:2 },
+                                    { label: 'Làm đẹp', value: 'lamDep', color: "black", id:3 },
+                                    { label: 'Thực phẩm', value: 'thucPham', color: "black", id:4 },
+                                    { label: 'Dịch vụ', value: 'dichVu', color: "black", id:5 },
+                                    { label: 'Gia dụng', value: 'giaDung', color: "black", id:6 },
+                                    { label: 'Việc làm', value: 'viecLam', color: "black", id:7 },
+                                    { label: 'Nhà ở', value: 'nhaO', color: "black", id:8 },
                                 ]}
                             />
                         </View>

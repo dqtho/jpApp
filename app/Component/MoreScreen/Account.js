@@ -51,7 +51,7 @@ export default class Account extends React.Component {
         Socketio.on("changeAccountDataResponse", async val=>{
             if(val.isSuccess){
                 Alert.alert("cap nhat thong tin thanh cong")
-                this.props.navigation.goBack("About")
+                this.props.navigation.push("About")
             }else{
                 Alert.alert("cap nhat thong tin khong thanh cong")
             }
