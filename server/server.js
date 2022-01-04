@@ -17,6 +17,7 @@ const changeEmail = require("./moreScreen/changeEmail")
 const changePassword = require("./moreScreen/changePassword")
 const changeAccountData = require("./moreScreen/changeAccountData")
 const getNewItem = require("./homeScreen/getNewItem")
+const getItemData = require("./homeScreen/getItemData")
 
 
 io.on("connection", socket => {
@@ -41,6 +42,8 @@ io.on("connection", socket => {
     socket.on("changeAccountData", async req => socket.emit("changeAccountDataResponse", await changeAccountData(req)))
 
     socket.on("getNewItem", async req => socket.emit("getNewItemResponse", await getNewItem(req)))
+
+    socket.on("getItemData", async req => socket.emit("getItemDataResponse", await getItemData(req)))
 
 })
 

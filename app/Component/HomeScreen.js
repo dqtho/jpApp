@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import NavigationBar from "./NavigationBar"
 import Home from "./HomeScreen/Home.js"
+import ShowItem from "./HomeScreen/ShowItem.js";
 
 export default class HomeScreen extends React.Component {
 
@@ -22,8 +23,16 @@ export default class HomeScreen extends React.Component {
                 <NavigationContainer screenOptions={{headerShown: true}}>
                     <Stack.Navigator>
                         <Stack.Screen name="Home" component={Home} options={{
+                            id:1,
                             title: 'Trang chu',
                             headerShown: false,
+                            headerStyle: { backgroundColor: 'red' },
+                            headerTitleStyle: { fontWeight: 'bold', }
+                        }} />
+                        <Stack.Screen name="ShowItem" component={ShowItem} options={{
+                            id:2,
+                            title: 'chi tiet san pham',
+                            headerShown: true,
                             headerStyle: { backgroundColor: 'red' },
                             headerTitleStyle: { fontWeight: 'bold', }
                         }} />
