@@ -23,14 +23,14 @@ export default class HomeScreen extends React.Component {
                 <NavigationContainer screenOptions={{headerShown: true}}>
                     <Stack.Navigator>
                         <Stack.Screen name="Home" component={Home} options={{
-                            id:1,
+                            key:1,
                             title: 'Trang chu',
                             headerShown: false,
                             headerStyle: { backgroundColor: 'red' },
                             headerTitleStyle: { fontWeight: 'bold', }
                         }} />
                         <Stack.Screen name="ShowItem" component={ShowItem} options={{
-                            id:2,
+                            key:2,
                             title: 'chi tiet san pham',
                             headerShown: true,
                             headerStyle: { backgroundColor: 'red' },
