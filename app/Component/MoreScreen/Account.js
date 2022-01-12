@@ -28,9 +28,9 @@ export default class Account extends React.Component {
         ImagePicker.openPicker({
             includeBase64: true,
             mediaType: "photo",
-            compressImageQuality:0.5,
-            compressImageMaxWidth:500,
-            compressImageMaxHeight:500
+            compressImageQuality: 0.5,
+            compressImageMaxWidth: 500,
+            compressImageMaxHeight: 500
         }).then(avata => {
             this.setState({ avata: avata.data })
         });
@@ -40,19 +40,19 @@ export default class Account extends React.Component {
         Socketio.emit("changeAccountData", {
             password: await LinhTinh.getData("password"),
             avata: this.state.avata,
-            username:this.state.username,
-            facebook:this.state.facebook,
-            phoneNumber:this.state.phoneNumber,
-            address:this.state.address
+            username: this.state.username,
+            facebook: this.state.facebook == "" ? null : this.state.facebook,
+            phoneNumber: this.state.phoneNumber == "" ? null : this.state.phoneNumber,
+            address: this.state.address
         })
     }
 
     render() {
-        Socketio.on("changeAccountDataResponse", async val=>{
-            if(val.isSuccess){
+        Socketio.on("changeAccountDataResponse", async val => {
+            if (val.isSuccess) {
                 Alert.alert("cap nhat thong tin thanh cong")
                 this.props.navigation.push("About")
-            }else{
+            } else {
                 Alert.alert("cap nhat thong tin khong thanh cong")
             }
         })
@@ -123,7 +123,7 @@ export default class Account extends React.Component {
                         <Text style={{ color: "black", fontSize: 20, flex: 1, marginTop: 20, marginLeft: 10 }}>SDT:</Text>
                         <TextInput
                             style={{ flex: 3, height: 50, backgroundColor: "white", borderRadius: 10, color: "black", fontSize: 20, borderBottomWidth: 0.5 }}
-                            onChangeText={(phoneNumber) => this.setState({ phoneNumber:phoneNumber.replace(/[^0-9]+/, '').toString() })}
+                            onChangeText={(phoneNumber) => this.setState({ phoneNumber: phoneNumber.replace(/[^0-9]+/, '').toString() })}
                             value={this.state.phoneNumber}
                             placeholder="Nhập phoneNumber"
                             placeholderTextColor="#999999"

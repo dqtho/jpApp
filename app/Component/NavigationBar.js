@@ -78,35 +78,35 @@ export default class NavigationBar extends React.Component {
                 {!this.state.hideNavigationBar ? (
                     <View style={styles.navigationBar}>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.messageButtonPress()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.messageButtonPress()} key={1}>
                             <Image
                                 style={{ opacity: this.state.messageButtonOpacity, width: 30, height: 30 }}
                                 source={require('../image/message.png')}
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.sellButtonPress()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.sellButtonPress()} key={2}>
                             <Image
                                 style={{ opacity: this.state.sellButtonOpacity }}
                                 source={require('../image/sell.png')}
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.homeButtonPress()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.homeButtonPress()} key={3}>
                             <Image
                                 style={{ opacity: this.state.homeButtonOpacity, width: 40, height: 40 }}
                                 source={require('../image/home.png')}
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.notificationButtonPress()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.notificationButtonPress()} key={4}>
                             <Image
                                 style={{ opacity: this.state.notificationButtonOpacity }}
                                 source={require('../image/notification.png')}
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.moreButtonPress()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.moreButtonPress()} key={5}>
                             <Image
                                 style={{ width: 35, height: 35, opacity: this.state.moreButtonOpacity }}
                                 source={require('../image/moreInfo.png')}

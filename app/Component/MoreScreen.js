@@ -21,43 +21,56 @@ export default class MoreScreen extends React.Component {
                         screenOptions={{
                             headerShown: true
                         }}>
-                        <Stack.Screen name="Login" component={Login} options={{
-                            id:1,
-                            title: 'Dang nhap',
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', }
-                        }} />
-                        <Stack.Screen name="InputOtp" component={InputOtp} options={{
-                            id:2,
-                            title: 'Xác Thực OTP',
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', } 
-                        }}/>
-                        <Stack.Screen name="About" component={About} options={{
-                            id:3,
-                            title: 'thong tin tai khoan',
-                            headerShown: true,
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', } 
-                        }}/>
-                        <Stack.Screen name="Account" component={Account} options={{
-                            id:4,
-                            title: 'chinh sua thong tin tai khoan',
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', } 
-                        }}/>
-                        <Stack.Screen name="ChangeEmail" component={ChangeEmail} options={{
-                            id:5,
-                            title: 'thay đổi địa chỉ email',
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', } 
-                        }}/>
-                        <Stack.Screen name="ChangePassword" component={ChangePassword} options={{
-                            id:6,
-                            title: 'thay đổi mat khau',
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', } 
-                        }}/>
+                        <Stack.Screen name="Login" component={Login} key={1}
+                            options={{
+                                id: 1,
+                                title: 'Dang nhap',
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }}
+                        />
+                        <Stack.Screen name="InputOtp" component={InputOtp} key={2}
+                            options={{
+                                id: 2,
+                                title: 'Xác Thực OTP',
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }}
+                        />
+                        <Stack.Screen name="About" component={About} key={3}
+                            options={{
+                                id: 3,
+                                title: 'thong tin tai khoan',
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'red' },
+
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }} 
+                            />
+                        <Stack.Screen name="Account" component={Account} key={4}
+                            options={{
+                                id: 4,
+                                title: 'chinh sua thong tin tai khoan',
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }} 
+                        />
+                        <Stack.Screen name="ChangeEmail" component={ChangeEmail} key={5}
+                            options={{
+                                id: 5,
+                                title: 'thay đổi địa chỉ email',
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }} 
+                        />
+                        <Stack.Screen name="ChangePassword" component={ChangePassword} key={6}
+                            options={{
+                                id: 6,
+                                title: 'thay đổi mat khau',
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }} 
+                        />
                     </Stack.Navigator>
                 </NavigationContainer>
                 {/* <Login /> */}

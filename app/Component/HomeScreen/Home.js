@@ -135,7 +135,7 @@ export default class HomeScreen extends React.Component {
 
                             {this.state.newItem.map((val, i) => {
                                 return (
-                                    <TouchableOpacity onPress={()=>this.itemHandle(val.id)} style={{ width: "48%", height: LinhTinh.deviceWidth / 2, margin: "1%", backgroundColor: "white", borderWidth: 0.5, borderColor: "red", borderRadius: 10 }} id={i}>
+                                    <TouchableOpacity onPress={()=>this.itemHandle(val.id)} style={{ width: "48%", height: LinhTinh.deviceWidth / 2, margin: "1%", backgroundColor: "white", borderWidth: 0.5, borderColor: "red", borderRadius: 10 }} key={i}>
                                         <View style={{ width: "96%", height: "64%", backgroundColor: "white", marginTop: "2%", marginLeft: "2%", borderRadius: 5 }}>
                                             <Image
                                                 style={{ width: "100%", height: "100%", borderRadius: 10 }}

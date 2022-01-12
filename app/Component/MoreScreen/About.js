@@ -16,21 +16,25 @@ export default class About extends React.Component {
             phoneNumber: null,
             email: null,
             point: null,
-            credit: null, 
+            credit: null,
 
-            password:null
+            password: null,
+
+            isMounted: false
         }
     }
     async componentDidMount() {
-        this.setState({password:await LinhTinh.getData("password")})
+
+        this.setState({ password: await LinhTinh.getData("password"), isMounted: true })
         Socketio.emit("getUserData", { password: await LinhTinh.getData("password") })
 
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
+        this.setState({ isMounted: false })
     }
     render() {
-        Socketio.on("getUserDataResponse", val => {
+        this.state.isMounted && Socketio.on("getUserDataResponse", val => {
             this.setState({
                 id: val.id,
                 username: val.username,
@@ -47,6 +51,7 @@ export default class About extends React.Component {
 
 
         })
+
         return (
 
 
@@ -133,9 +138,10 @@ export default class About extends React.Component {
                     </TouchableOpacity>
                 </View>
 
-                <Text style={{color:"black", fontSize:20}}>{this.state.password}</Text>
+                <Text style={{ color: "black", fontSize: 20 }}>{this.state.password}</Text>
 
             </View>
         )
     }
+
 }

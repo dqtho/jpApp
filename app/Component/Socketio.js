@@ -7,7 +7,7 @@ import {
 const socket = io("http://192.168.1.6:3000")
 export default class Socketio{
 
-    static emit(name, json){
+    static async emit(name, json){
         socket.emit(name, json)
     }
 
@@ -15,5 +15,10 @@ export default class Socketio{
         socket.on(name, val=>{
             cb(val)
         })
+    }
+
+    static off(name, cb){
+        socket.off(name, val=>
+            cb(val))
     }
 }

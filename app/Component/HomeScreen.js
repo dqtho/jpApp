@@ -20,22 +20,24 @@ export default class HomeScreen extends React.Component {
         return (
             <View style={{ width: "100%", height: "100%", backgroundColor: "#e8e8e8" }}>
                 {/* <Home /> */}
-                <NavigationContainer screenOptions={{headerShown: true}}>
+                <NavigationContainer screenOptions={{ headerShown: true }}>
                     <Stack.Navigator>
-                        <Stack.Screen name="Home" component={Home} options={{
-                            key:1,
-                            title: 'Trang chu',
-                            headerShown: false,
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', }
-                        }} />
-                        <Stack.Screen name="ShowItem" component={ShowItem} options={{
-                            key:2,
-                            title: 'chi tiet san pham',
-                            headerShown: true,
-                            headerStyle: { backgroundColor: 'red' },
-                            headerTitleStyle: { fontWeight: 'bold', }
-                        }} />
+                        <Stack.Screen name="Home" component={Home} key={1}
+                            options={{
+                                title: 'Trang chu',
+                                headerShown: false,
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }}
+                        />
+                        <Stack.Screen name="ShowItem" component={ShowItem} key={2}
+                            options={{
+                                title: 'chi tiet san pham',
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }}
+                        />
                         {/* <Stack.Screen name="InputOtp" component={InputOtp} /> */}
                     </Stack.Navigator>
                 </NavigationContainer>
