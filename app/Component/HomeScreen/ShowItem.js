@@ -148,7 +148,7 @@ export default class ShowItem extends React.Component {
 
                 ) : null}
 
-                <View style={{ width: "100%", height: 3000, backgroundColor: "white", marginTop: 20 }}>
+                <View style={{ width: "100%", height: "auto", backgroundColor: "white", marginTop: 20, marginBottom:100 }}>
                     <Text style={{ color: "black", fontSize: 25, marginTop: 10, marginLeft: 10 }}>{this.state.tieuDe}</Text>
                     <Text style={{ marginTop: 20, marginLeft: 10 }}>
                         <Text style={{ color: "red", fontSize: 20 }}>¥{this.state.gia}</Text>
@@ -195,7 +195,7 @@ export default class ShowItem extends React.Component {
                         )}
 
                         {this.state.phoneNumber == null ? null : (
-                            <TouchableOpacity onPress={() => Linking.openURL(`http://facebook.com/hong.magui.5`)} style={{ flex: 1, width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
+                            <TouchableOpacity onPress={() => Linking.openURL(`tel:${this.state.phoneNumber}`)} style={{ flex: 1, width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
                                 <Image
                                     style={{ width: 40, height: 40 }}
                                     source={require('../../image/phone.png')}
@@ -206,7 +206,7 @@ export default class ShowItem extends React.Component {
 
                     </View>
 
-                    <View style={{ width: "100%", marginTop: 10, borderTopWidth: 0.5, borderColor: "rgba(99,99,99,0.5)" }}>
+                    <View style={{ width: "100%", marginTop: 10, borderTopWidth: 0.5, borderColor: "rgba(99,99,99,0.5)", marginBottom:40 }}>
                         <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", marginTop: 10, marginLeft: 10 }}>cung nguoi ban:</Text>
                         <View style={{ width: "100%", height: "auto", flexDirection: "row", flexWrap: "wrap", marginTop: 20 }}>
                             {this.state.isDataLoaded && this.state.listedItem.map((val, i) => {

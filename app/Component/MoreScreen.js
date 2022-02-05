@@ -18,6 +18,7 @@ export default class MoreScreen extends React.Component {
             <View style={{ position: "absolute", zIndex: 2, width: "100%", height: "100%", backgroundColor: "#e8e8e8" }}>
                 <NavigationContainer>
                     <Stack.Navigator
+                        initialRouteName="About"
                         screenOptions={{
                             headerShown: true
                         }}>

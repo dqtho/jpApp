@@ -111,6 +111,7 @@ export default class PostProduct extends React.Component {
                 <View style={{ width: "100%", height: 400, marginTop: 20, backgroundColor: "white" }}>
                     <Text style={{ color: "black", fontSize: 25, fontWeight: "bold", opacity: 0.8, marginTop: 10, marginLeft: 10 }}>Tiêu đề sản phẩm:</Text>
                     <TextInput
+                        key={1}
                         style={{ borderBottomWidth: 0.5, height: 40, backgroundColor: "white", margin: 5, paddingLeft: 5, color: "black", fontSize: 20 }}
                         onChangeText={(tieuDe) => this.setState({ tieuDe })}
                         value={this.state.tieuDe}
@@ -119,6 +120,7 @@ export default class PostProduct extends React.Component {
                     />
                     <Text style={{ color: "black", fontSize: 25, fontWeight: "bold", opacity: 0.8, marginTop: 10, marginLeft: 10 }}>Mô tả:</Text>
                     <TextInput
+                        key={2}
                         style={{ borderBottomWidth: 0.5, height: 250, backgroundColor: "white", margin: 5, paddingLeft: 5, color: "black", fontSize: 20 }}
                         onChangeText={(moTa) => this.setState({ moTa })}
                         value={this.state.moTa}

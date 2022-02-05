@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import NavigationBar from "./NavigationBar"
 import Home from "./HomeScreen/Home.js"
 import ShowItem from "./HomeScreen/ShowItem.js";
+import SearchList from "./HomeScreen/SearchList.js";
 
 export default class HomeScreen extends React.Component {
 
@@ -33,6 +34,14 @@ export default class HomeScreen extends React.Component {
                         <Stack.Screen name="ShowItem" component={ShowItem} key={2}
                             options={{
                                 title: 'chi tiet san pham',
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'red' },
+                                headerTitleStyle: { fontWeight: 'bold', }
+                            }}
+                        />
+                        <Stack.Screen name="SearchList" component={SearchList} key={3}
+                            options={{
+                                title: 'ket qua tim kiem',
                                 headerShown: true,
                                 headerStyle: { backgroundColor: 'red' },
                                 headerTitleStyle: { fontWeight: 'bold', }

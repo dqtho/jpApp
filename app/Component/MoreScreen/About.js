@@ -128,7 +128,7 @@ export default class About extends React.Component {
 
                     <TouchableOpacity onPress={() => {
                         LinhTinh.removeData("password")
-                        this.props.navigation.navigate("Login")
+                        this.props.navigation.replace("Login")
                     }} style={{ flexDirection: "row" }}>
                         <Image
                             style={{ width: 25, height: 25, margin: 10, borderRadius: 10 }}

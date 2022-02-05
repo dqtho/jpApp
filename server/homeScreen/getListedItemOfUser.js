@@ -1,17 +1,18 @@
-const { promises } = require("nodemailer/lib/xoauth2");
-const db = require("../db");
+let db = require("../db")
+async function getListedItemOfUser(req) {
 
-async function getNewItem(req) {
+
+
     let data = []
-    let newItem = await db("select id, tieuDe, moTa, khuVuc, gia, phiShip, password from product")
+    let item = await db("select * from product where password = ? limit ? ", [req.password, req.limit])
 
     await Promise.all(
-        newItem.map(async val => {
+        item.map(async val => {
             let image = await db("select * from image where productId = ? limit 1;", [val.id])
             val = {
                 id: val.id,
                 tieuDe: val.tieuDe,
-                moTa:val.moTa,
+                moTa: val.moTa,
                 khuVuc: val.khuVuc,
                 gia: val.gia,
                 phiShip: val.phiShip,
@@ -21,10 +22,7 @@ async function getNewItem(req) {
             data.push(val)
         })
     )
-
-
-    console.log(data)
     return data
 }
 
-module.exports = getNewItem
+module.exports = getListedItemOfUser

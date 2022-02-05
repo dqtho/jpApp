@@ -18,6 +18,8 @@ const changePassword = require("./moreScreen/changePassword")
 const changeAccountData = require("./moreScreen/changeAccountData")
 const getNewItem = require("./homeScreen/getNewItem")
 const getItemData = require("./homeScreen/getItemData")
+const getListedItemOfUser = require("./homeScreen/getListedItemOfUser")
+const getSearchList = require("./homeScreen/getSearchList")
 
 
 io.on("connection", socket => {
@@ -44,6 +46,10 @@ io.on("connection", socket => {
     socket.on("getNewItem", async req => socket.emit("getNewItemResponse", await getNewItem(req)))
 
     socket.on("getItemData", async req => socket.emit("getItemDataResponse", await getItemData(req)))
+    
+    socket.on("getListedItemOfUser", async req => socket.emit("getListedItemOfUserResponse", await getListedItemOfUser(req)))
+    
+    socket.on("getSearchList", async req => socket.emit("getSearchListResponse", await getSearchList(req)))
 
 })
 

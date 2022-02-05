@@ -52,7 +52,7 @@ export default class Login extends React.Component {
                 await LinhTinh.storeData("password", val.password)
                 // await LinhTinh.storeData("id", val.id)
                 // await LinhTinh.storeData("avata", val.avata)
-                this.props.navigation.navigate("About")
+                this.props.navigation.replace("About")
             } else {
                 console.log("sign in false")
                 this.alert("dang nhap khong thanh cong")
